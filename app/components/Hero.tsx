@@ -124,19 +124,19 @@ const Hero = () => {
             </motion.div>
           </motion.div>
         </div>
-
-        {/* Scroll indicator - centered */}
-        <motion.div 
-          className="absolute bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
-        >
-          <a href="#about" className="group inline-block p-4 rounded-full bg-gray-900/80 backdrop-blur-md hover:bg-gray-900/90 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/25 border-2 border-white/30 hover:border-white/50">
-            <ChevronDown size={28} className="text-white group-hover:text-white transition-colors duration-300 group-hover:animate-pulse drop-shadow-lg" />
-          </a>
-        </motion.div>
       </div>
+
+      {/* Scroll indicator - positioned relative to full section */}
+      <motion.div 
+        className="absolute bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce z-20"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 1.2 }}
+      >
+        <a href="#about" className="group inline-block p-4 rounded-full bg-gray-900/80 backdrop-blur-md hover:bg-gray-900/90 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/25 border-2 border-white/30 hover:border-white/50">
+          <ChevronDown size={28} className="text-white group-hover:text-white transition-colors duration-300 group-hover:animate-pulse drop-shadow-lg" />
+        </a>
+      </motion.div>
     </section>
   )
 }

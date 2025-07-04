@@ -72,7 +72,7 @@ const Carousel = ({
   }
 
   return (
-    <div className={`relative overflow-hidden ${className}`}>
+    <div className={`relative overflow-visible ${className}`}>
       {/* Main carousel container */}
       <div className="relative h-full min-h-[400px] flex items-center justify-center">
         <AnimatePresence initial={false} custom={currentIndex}>
@@ -114,7 +114,7 @@ const Carousel = ({
         <>
           <button
             onClick={prevSlide}
-            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-900/80 backdrop-blur-md hover:bg-gray-900/90 text-white p-3 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-2xl shadow-lg border-2 border-white/20 hover:border-white/40 z-10 group"
+            className="absolute -left-12 top-1/2 transform -translate-y-1/2 bg-gray-900/80 backdrop-blur-md hover:bg-gray-900/90 text-white p-3 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-2xl shadow-lg border-2 border-white/20 hover:border-white/40 z-10 group"
           >
             <ChevronLeft 
               size={28} 
@@ -123,7 +123,7 @@ const Carousel = ({
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-900/80 backdrop-blur-md hover:bg-gray-900/90 text-white p-3 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-2xl shadow-lg border-2 border-white/20 hover:border-white/40 z-10 group"
+            className="absolute -right-12 top-1/2 transform -translate-y-1/2 bg-gray-900/80 backdrop-blur-md hover:bg-gray-900/90 text-white p-3 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-2xl shadow-lg border-2 border-white/20 hover:border-white/40 z-10 group"
           >
             <ChevronRight 
               size={28} 
