@@ -17,6 +17,7 @@ interface SkillCategory {
 interface SkillGraphProps {
   categories: SkillCategory[];
   size?: number;
+  activeCategoryTitle?: string | null;
 }
 
 /*
@@ -24,7 +25,7 @@ interface SkillGraphProps {
   that scales on hover and reveals a tooltip with the skill name (and optional description).
   The component uses Framer Motion for smooth animations.
 */
-const SkillGraph = ({ categories, size = 480 }: SkillGraphProps) => {
+const SkillGraph = ({ categories, size = 480, activeCategoryTitle = null }: SkillGraphProps) => {
   const [hoveredGroup, setHoveredGroup] = useState<string | null>(null);
 
   const allNodes = useMemo(() => {
@@ -53,6 +54,8 @@ const SkillGraph = ({ categories, size = 480 }: SkillGraphProps) => {
     });
     return nodes;
   }, [categories, size]);
+  
+  const activeGroup = hoveredGroup || activeCategoryTitle;
 
   return (
     <div className="flex flex-col items-center">
@@ -65,9 +68,9 @@ const SkillGraph = ({ categories, size = 480 }: SkillGraphProps) => {
             </linearGradient>
           </defs>
           {allNodes.map((node) => {
-            if (!hoveredGroup || node.group !== hoveredGroup) return null;
+            if (!activeGroup || node.group !== activeGroup) return null;
             
-            const groupNodes = allNodes.filter(n => n.group === hoveredGroup);
+            const groupNodes = allNodes.filter(n => n.group === activeGroup);
             
             return groupNodes.map((otherNode) => {
               if (node.name === otherNode.name) return null;
@@ -97,10 +100,16 @@ const SkillGraph = ({ categories, size = 480 }: SkillGraphProps) => {
         </div>
 
         {allNodes.map((node) => {
-          const isActive = hoveredGroup === node.group;
-          const baseClasses = isActive
-            ? `bg-gradient-to-br ${node.color} text-white`
-            : "bg-gray-200 text-gray-700 hover:bg-gray-300";
+          const isActive = activeGroup === node.group;
+          
+          let baseClasses = "bg-gray-200 text-gray-700 opacity-30";
+          if (isActive) {
+            baseClasses = `bg-gradient-to-br ${node.color} text-white`;
+          } else if (hoveredGroup) {
+            baseClasses = "bg-gray-200 text-gray-700 opacity-30";
+          } else {
+            baseClasses = `bg-gradient-to-br ${node.color} text-white opacity-30 hover:opacity-100`;
+          }
 
           return (
             <motion.div
@@ -109,7 +118,7 @@ const SkillGraph = ({ categories, size = 480 }: SkillGraphProps) => {
               style={{ left: `calc(50% + ${node.x}px)`, top: `calc(50% + ${node.y}px)` }}
               initial={{ x: "-50%", y: "-50%", scale: 1 }}
               animate={{ zIndex: isActive ? 10 : 1 }}
-              whileHover={{ scale: 1.2, zIndex: 20 }}
+              whileHover={{ scale: 1.2, zIndex: 20, opacity: 1 }}
               onHoverStart={() => setHoveredGroup(node.group)}
               onHoverEnd={() => setHoveredGroup(null)}
               transition={{ type: "spring", stiffness: 400, damping: 15 }}
@@ -124,7 +133,7 @@ const SkillGraph = ({ categories, size = 480 }: SkillGraphProps) => {
       
       <div className="h-10 mt-4 text-center">
         <AnimatePresence>
-          {hoveredGroup && (
+          {activeGroup && (
             <motion.h3
               className="text-xl font-bold text-gray-800"
               initial={{ opacity: 0, y: 10 }}
@@ -132,7 +141,7 @@ const SkillGraph = ({ categories, size = 480 }: SkillGraphProps) => {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
             >
-              {hoveredGroup}
+              {activeGroup}
             </motion.h3>
           )}
         </AnimatePresence>

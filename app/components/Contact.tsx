@@ -41,7 +41,7 @@ const Contact = () => {
   ]
 
   return (
-    <section id="contact" className="mobile-py bg-gradient-to-br from-blue-600 to-purple-600 safe-area-bottom">
+    <section id="contact" className="mobile-py bg-gradient-to-br from-blue-600 to-purple-600 safe-area-bottom pb-48 sm:pb-56">
       <div className="mobile-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

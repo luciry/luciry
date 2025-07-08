@@ -39,7 +39,7 @@ const Carousel = ({
     setCurrentIndex(index)
   }
 
-  // Auto-play functionality
+  // Auto-play and swipe hint timer
   useEffect(() => {
     if (autoPlay) {
       const interval = setInterval(nextSlide, autoPlayInterval)
@@ -165,13 +165,6 @@ const Carousel = ({
           animate={{ width: `${((currentIndex + 1) / children.length) * 100}%` }}
           transition={{ duration: 0.5 }}
         />
-      </div>
-
-      {/* Swipe indicator for mobile */}
-      <div className="absolute top-4 left-1/2 transform -translate-x-1/2 text-white/60 text-xs sm:hidden">
-        <span className="bg-gray-900/50 px-2 py-1 rounded-full backdrop-blur-sm">
-          Swipe to navigate
-        </span>
       </div>
     </div>
   )

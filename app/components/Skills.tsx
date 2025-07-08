@@ -6,7 +6,7 @@ import SkillGraph from './SkillGraph'
 import { useState, useEffect } from 'react'
 
 const Skills = () => {
-  const [graphSize, setGraphSize] = useState(320);
+  const [graphSize, setGraphSize] = useState(300);
   const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
 
   const skillCategories = [
@@ -107,6 +107,8 @@ const Skills = () => {
       clearInterval(categoryInterval);
     }
   }, [skillCategories.length]);
+  
+  const activeCategoryTitle = skillCategories[currentCategoryIndex].title;
 
   return (
     <section id="skills" className="mobile-py bg-gradient-to-br from-slate-50 to-blue-50">
@@ -129,14 +131,14 @@ const Skills = () => {
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
               >
-                {skillCategories[currentCategoryIndex].title}
+                {activeCategoryTitle}
               </motion.p>
             </AnimatePresence>
           </div>
         </motion.div>
 
-        <div className="w-full flex justify-center items-center h-[400px] sm:h-[560px] lg:h-[700px]">
-          <SkillGraph categories={skillCategories} size={graphSize} />
+        <div className="w-full flex justify-center items-center h-[380px] sm:h-[560px] lg:h-[700px]">
+          <SkillGraph categories={skillCategories} size={graphSize} activeCategoryTitle={activeCategoryTitle} />
         </div>
       </div>
     </section>

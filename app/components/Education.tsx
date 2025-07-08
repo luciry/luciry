@@ -45,14 +45,14 @@ const Education = () => {
   ]
 
   return (
-    <section id="education" className="mobile-py bg-gradient-to-br from-blue-50 to-purple-50">
+    <section id="education" className="pt-8 sm:pt-12 lg:pt-16 pb-16 sm:pb-20 lg:pb-24 bg-gradient-to-br from-blue-50 to-purple-50">
       <div className="mobile-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-12 sm:mb-16"
+          className="text-center mb-8 sm:mb-12"
         >
           <h2 className="mobile-text-3xl font-bold mb-4 sm:mb-6 gradient-text">Education</h2>
           <p className="mobile-text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -66,7 +66,7 @@ const Education = () => {
             autoPlayInterval={6000}
             showIndicators={true}
             showNavigation={true}
-            className="h-[560px] sm:h-[480px] md:h-[450px]"
+            className="h-[520px] sm:h-[480px] md:h-[450px]"
           >
             {educationData.map((edu, index) => (
               <motion.div

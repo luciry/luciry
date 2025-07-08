@@ -93,14 +93,14 @@ const Experience = () => {
   ]
 
   return (
-    <section id="experience" className="mobile-py bg-white">
+    <section id="experience" className="pt-8 sm:pt-12 lg:pt-16 pb-16 sm:pb-20 lg:pb-24 bg-white">
       <div className="mobile-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-12 sm:mb-16"
+          className="text-center mb-8 sm:mb-12"
         >
           <h2 className="mobile-text-3xl font-bold mb-4 sm:mb-6 gradient-text">Experience</h2>
           <p className="mobile-text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -114,7 +114,7 @@ const Experience = () => {
             autoPlayInterval={7000}
             showIndicators={true}
             showNavigation={true}
-            className="h-[590px] sm:h-[500px] md:h-[480px] lg:h-[450px]"
+            className="h-[560px] sm:h-[500px] md:h-[480px] lg:h-[450px]"
           >
             {experiences.map((exp, index) => (
               <motion.div
@@ -169,13 +169,13 @@ const Experience = () => {
                         
                         {/* Description */}
                         <div className="border-t border-gray-200 pt-3 sm:pt-4">
-                          <p className="text-xs sm:text-sm text-gray-700 leading-relaxed mb-3">
+                          <p className="text-xs sm:text-sm text-gray-700 leading-relaxed mb-2 sm:mb-3">
                             {exp.description}
                           </p>
                         </div>
                         
                         {/* Highlights */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-1.5 sm:gap-2">
                           {exp.highlights.map((highlight, i) => (
                             <motion.div 
                               key={i} 
