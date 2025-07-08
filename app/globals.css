@@ -18,6 +18,35 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-feature-settings: "rlig" 1, "calt" 1;
+  /* Mobile optimization */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Mobile touch optimization */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px; /* Prevent zoom on form inputs on iOS */
+  }
+  
+  /* Prevent horizontal scroll */
+  html, body {
+    overflow-x: hidden;
+  }
+  
+  /* Better touch targets */
+  button, a, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Improve text readability on mobile */
+  p, span, div {
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    word-wrap: break-word;
+  }
 }
 
 @layer utilities {
@@ -25,6 +54,60 @@ body {
     text-wrap: balance;
   }
   
+  /* Mobile-specific text utilities */
+  .mobile-text-sm {
+    @apply text-sm sm:text-base;
+  }
+  
+  .mobile-text-base {
+    @apply text-base sm:text-lg;
+  }
+  
+  .mobile-text-lg {
+    @apply text-lg sm:text-xl;
+  }
+  
+  .mobile-text-xl {
+    @apply text-xl sm:text-2xl;
+  }
+  
+  .mobile-text-2xl {
+    @apply text-2xl sm:text-3xl;
+  }
+  
+  .mobile-text-3xl {
+    @apply text-3xl sm:text-4xl md:text-5xl;
+  }
+  
+  .mobile-text-4xl {
+    @apply text-4xl sm:text-5xl md:text-6xl;
+  }
+  
+  /* Mobile spacing utilities */
+  .mobile-px {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+  
+  .mobile-py {
+    @apply py-8 sm:py-12 lg:py-16;
+  }
+  
+  /* Mobile-friendly buttons */
+  .mobile-btn {
+    @apply px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base rounded-lg sm:rounded-xl;
+    min-height: 44px;
+  }
+  
+  /* Safe area padding for mobile */
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  /* Animation delays */
   .animation-delay-0 {
     animation-delay: 0s;
   }
@@ -44,11 +127,22 @@ body {
   .animation-delay-1000 {
     animation-delay: 1s;
   }
+  
+  /* Mobile container */
+  .mobile-container {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+  }
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - mobile optimized */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
+}
+
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 3px;
+  }
 }
 
 ::-webkit-scrollbar-track {
@@ -64,9 +158,16 @@ body {
   background: #555;
 }
 
-/* Smooth scrolling */
+/* Smooth scrolling - improved for mobile */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Account for fixed header */
+}
+
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 70px;
+  }
 }
 
 /* Custom gradient backgrounds */
@@ -95,4 +196,24 @@ html {
 
 .gradient-text:hover::after {
   opacity: 0.2;
+}
+
+/* Mobile-optimized animations */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Touch-friendly focus states */
+@media (hover: none) and (pointer: coarse) {
+  .hover\\:scale-105:hover {
+    transform: scale(1.02);
+  }
+  
+  .hover\\:scale-110:hover {
+    transform: scale(1.05);
+  }
 } 

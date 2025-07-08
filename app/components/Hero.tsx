@@ -10,10 +10,10 @@ const Hero = () => {
       {/* Enhanced Background Animation */}
       <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-100/20 to-purple-100/20"></div>
-        {/* Animated gradient orbs */}
-        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse animation-delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-r from-cyan-400/15 to-blue-400/15 rounded-full blur-3xl animate-pulse animation-delay-500"></div>
+        {/* Animated gradient orbs - mobile optimized */}
+        <div className="absolute top-1/4 left-1/4 w-48 h-48 sm:w-72 sm:h-72 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse animation-delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-56 h-56 sm:w-80 sm:h-80 bg-gradient-to-r from-cyan-400/15 to-blue-400/15 rounded-full blur-3xl animate-pulse animation-delay-500"></div>
         {/* Floating particles */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-1/4 left-1/5 w-2 h-2 bg-blue-400/60 rounded-full animate-bounce animation-delay-0"></div>
@@ -23,7 +23,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 text-center relative z-10">
+      <div className="mobile-container text-center relative z-10 safe-area-top">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-7xl mx-auto">
           {/* Profile Image Section */}
           <motion.div
@@ -40,7 +40,7 @@ const Hero = () => {
                   alt="Luca Cirillo - AI Engineer & Researcher"
                   width={300}
                   height={300}
-                  className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full shadow-2xl hover:scale-105 transition-all duration-500 border-4 border-white/20 hover:border-white/40 object-cover"
+                  className="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full shadow-2xl hover:scale-105 transition-all duration-500 border-4 border-white/20 hover:border-white/40 object-cover"
                   priority
                 />
                 <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-500/20 to-purple-500/20 hover:from-blue-500/30 hover:to-purple-500/30 transition-all duration-500"></div>
@@ -56,7 +56,7 @@ const Hero = () => {
             className="text-center lg:text-left order-2 lg:order-2"
           >
             <motion.h1 
-              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-white drop-shadow-2xl hover:scale-105 transition-transform duration-300 cursor-default"
+              className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 text-white drop-shadow-2xl hover:scale-105 transition-transform duration-300 cursor-default leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -66,7 +66,7 @@ const Hero = () => {
             </motion.h1>
             
             <motion.p
-              className="text-xl md:text-2xl text-white font-bold mb-6 max-w-2xl mx-auto lg:mx-0 drop-shadow-lg"
+              className="mobile-text-lg md:text-2xl text-white font-bold mb-4 sm:mb-6 max-w-2xl mx-auto lg:mx-0 drop-shadow-lg leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
@@ -75,7 +75,7 @@ const Hero = () => {
             </motion.p>
             
             <motion.p
-              className="text-lg text-white font-medium mb-8 max-w-3xl mx-auto lg:mx-0 leading-relaxed drop-shadow-lg"
+              className="mobile-text-base text-white font-medium mb-6 sm:mb-8 max-w-3xl mx-auto lg:mx-0 leading-relaxed drop-shadow-lg"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
@@ -85,7 +85,7 @@ const Hero = () => {
             </motion.p>
 
             <motion.div 
-              className="flex flex-wrap justify-center lg:justify-start gap-4 mb-8"
+              className="flex flex-col sm:flex-row flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 mb-6 sm:mb-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1 }}
@@ -94,7 +94,7 @@ const Hero = () => {
               href="https://github.com/luciry"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center space-x-2 bg-gray-900 text-white px-6 py-3 rounded-full hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-gray-500/25 relative overflow-hidden"
+              className="group flex items-center justify-center space-x-2 bg-gray-900 text-white mobile-btn hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-gray-500/25 relative overflow-hidden w-full sm:w-auto"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-gray-600 to-gray-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <Github size={20} className="z-10 group-hover:rotate-12 transition-transform duration-300" />
@@ -105,7 +105,7 @@ const Hero = () => {
               href="https://linkedin.com/in/luca-cirillo"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center space-x-2 bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 relative overflow-hidden"
+              className="group flex items-center justify-center space-x-2 bg-blue-600 text-white mobile-btn hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 relative overflow-hidden w-full sm:w-auto"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <Linkedin size={20} className="z-10 group-hover:rotate-12 transition-transform duration-300" />
@@ -114,7 +114,7 @@ const Hero = () => {
             </a>
             <a
               href="mailto:lucacirillo@outlook.com"
-              className="group flex items-center space-x-2 bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-green-500/25 relative overflow-hidden"
+              className="group flex items-center justify-center space-x-2 bg-green-600 text-white mobile-btn hover:bg-green-700 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-green-500/25 relative overflow-hidden w-full sm:w-auto"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-green-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <Mail size={20} className="z-10 group-hover:rotate-12 transition-transform duration-300" />
@@ -128,13 +128,13 @@ const Hero = () => {
 
       {/* Scroll indicator - positioned relative to full section */}
       <motion.div 
-        className="absolute bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce z-20"
+        className="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce z-20 safe-area-bottom"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 1.2 }}
       >
-        <a href="#about" className="group inline-block p-4 rounded-full bg-gray-900/80 backdrop-blur-md hover:bg-gray-900/90 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/25 border-2 border-white/30 hover:border-white/50">
-          <ChevronDown size={28} className="text-white group-hover:text-white transition-colors duration-300 group-hover:animate-pulse drop-shadow-lg" />
+        <a href="#about" className="group inline-block p-3 sm:p-4 rounded-full bg-gray-900/80 backdrop-blur-md hover:bg-gray-900/90 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/25 border-2 border-white/30 hover:border-white/50">
+          <ChevronDown size={24} className="sm:w-7 sm:h-7 text-white group-hover:text-white transition-colors duration-300 group-hover:animate-pulse drop-shadow-lg" />
         </a>
       </motion.div>
     </section>

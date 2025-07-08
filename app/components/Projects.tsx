@@ -14,7 +14,7 @@ const Projects = () => {
       highlights: [
         "Retrieval-Augmented Generation implementation",
         "Model fine-tuning for simulation contexts",
-                 "International collaboration with defense organizations",
+        "International collaboration with defense organizations",
         "Novel approaches to AI-driven simulation"
       ]
     },
@@ -101,32 +101,32 @@ const Projects = () => {
     switch (category) {
       case 'Research':
       case 'AI Research':
-        return <Brain className="w-5 h-5" />
+        return <Brain className="w-4 h-4 sm:w-5 sm:h-5" />
       case 'Software Development':
       case 'Simulation':
-        return <Code className="w-5 h-5" />
+        return <Code className="w-4 h-4 sm:w-5 sm:h-5" />
       default:
-        return <Award className="w-5 h-5" />
+        return <Award className="w-4 h-4 sm:w-5 sm:h-5" />
     }
   }
 
   return (
-    <section id="projects" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
+    <section id="projects" className="mobile-py bg-white">
+      <div className="mobile-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl font-bold mb-6 gradient-text">Projects</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <h2 className="mobile-text-3xl font-bold mb-4 sm:mb-6 gradient-text">Projects</h2>
+          <p className="mobile-text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
             A selection of research projects and software developments spanning AI, simulation, and machine learning
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={index}
@@ -134,30 +134,30 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+              className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full"
             >
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-4">
+              <div className="p-4 sm:p-6 flex flex-col flex-1">
+                <div className="flex items-center justify-between mb-3 sm:mb-4">
                   <div className="flex items-center">
                     <div className="text-blue-600 mr-2">
                       {getCategoryIcon(project.category)}
                     </div>
-                    <span className="text-sm text-gray-600">{project.category}</span>
+                    <span className="text-xs sm:text-sm text-gray-600 font-medium">{project.category}</span>
                   </div>
                   <div className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(project.status)}`}>
                     {project.status}
                   </div>
                 </div>
                 
-                <h3 className="text-xl font-bold text-gray-800 mb-3">
+                <h3 className="mobile-text-lg font-bold text-gray-800 mb-2 sm:mb-3 leading-tight">
                   {project.title}
                 </h3>
                 
-                <p className="text-gray-700 mb-4 text-sm leading-relaxed">
+                <p className="text-sm sm:text-base text-gray-700 mb-3 sm:mb-4 leading-relaxed flex-1">
                   {project.description}
                 </p>
                 
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
                   {project.technologies.map((tech, i) => (
                     <span
                       key={i}
@@ -168,26 +168,26 @@ const Projects = () => {
                   ))}
                 </div>
                 
-                <div className="space-y-2 mb-4">
+                <div className="space-y-1.5 sm:space-y-2 mb-3 sm:mb-4 flex-1">
                   {project.highlights.map((highlight, i) => (
-                    <div key={i} className="flex items-start text-sm text-gray-600">
-                      <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2 mt-1.5 flex-shrink-0"></div>
-                      <span>{highlight}</span>
+                    <div key={i} className="flex items-start text-xs sm:text-sm text-gray-600">
+                      <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-blue-500 rounded-full mr-2 mt-1.5 sm:mt-2 flex-shrink-0"></div>
+                      <span className="leading-relaxed">{highlight}</span>
                     </div>
                   ))}
                 </div>
                 
                 {project.github && (
-                  <div className="flex space-x-3">
+                  <div className="mt-auto">
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex items-center text-gray-600 hover:text-blue-600 transition-all duration-300 bg-gray-100 hover:bg-blue-50 px-3 py-2 rounded-lg hover:shadow-md"
+                      className="group flex items-center justify-center text-gray-600 hover:text-blue-600 transition-all duration-300 bg-gray-100 hover:bg-blue-50 px-3 py-2 rounded-lg hover:shadow-md w-full min-h-[44px]"
                     >
-                      <Github size={16} className="mr-1 group-hover:rotate-12 transition-transform duration-300" />
+                      <Github size={16} className="mr-2 group-hover:rotate-12 transition-transform duration-300" />
                       <span className="text-sm font-medium">GitHub</span>
-                      <ExternalLink size={12} className="ml-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <ExternalLink size={12} className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </a>
                   </div>
                 )}

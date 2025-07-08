@@ -11,7 +11,7 @@ const Education = () => {
       institution: "Università degli studi di Genova",
       location: "Genova, Italy",
       period: "Nov 2024 - Present",
-             description: "Research focus on integrating Large Language Models into simulation environments, working with international partners including governmental organizations and multinational corporations.",
+      description: "Research focus on integrating Large Language Models into simulation environments, working with international partners including governmental organizations and multinational corporations.",
       status: "In Progress",
       highlight: "Current Research"
     },
@@ -45,28 +45,28 @@ const Education = () => {
   ]
 
   return (
-    <section id="education" className="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
-      <div className="container mx-auto px-4">
+    <section id="education" className="mobile-py bg-gradient-to-br from-blue-50 to-purple-50">
+      <div className="mobile-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl font-bold mb-6 gradient-text">Education</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <h2 className="mobile-text-3xl font-bold mb-4 sm:mb-6 gradient-text">Education</h2>
+          <p className="mobile-text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
             My academic journey from scientific foundations to AI research specialization
           </p>
         </motion.div>
 
-                <div className="max-w-5xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <Carousel 
             autoPlay={true} 
             autoPlayInterval={6000}
             showIndicators={true}
             showNavigation={true}
-            className="h-[500px]"
+            className="h-[450px] sm:h-[500px] lg:h-[550px]"
           >
             {educationData.map((edu, index) => (
               <motion.div
@@ -74,51 +74,60 @@ const Education = () => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6 }}
-                className="w-full max-w-4xl mx-auto"
+                className="w-full max-w-4xl mx-auto px-2 sm:px-4"
               >
-                <div className="bg-white rounded-xl shadow-2xl overflow-hidden hover:shadow-3xl transition-all duration-500 border border-blue-100/50 backdrop-blur-sm">
+                <div className="bg-white rounded-xl shadow-2xl overflow-hidden hover:shadow-3xl transition-all duration-500 border border-blue-100/50 backdrop-blur-sm h-full">
                   <div className="bg-gradient-to-r from-blue-500 to-purple-500 p-1">
-                    <div className="bg-white rounded-t-lg p-8">
-                      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
-                        <div className="flex-1">
-                          <div className="flex items-center mb-4">
-                            <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mr-4">
-                              <BookOpen size={24} className="text-white" />
+                    <div className="bg-white rounded-t-lg p-4 sm:p-6 lg:p-8 h-full">
+                      <div className="flex flex-col space-y-4 sm:space-y-6 h-full">
+                        {/* Header Section */}
+                        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between">
+                          <div className="flex-1">
+                            <div className="flex items-start mb-4">
+                              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0">
+                                <BookOpen size={20} className="sm:w-6 sm:h-6 text-white" />
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <h3 className="mobile-text-lg sm:text-xl lg:text-2xl font-bold text-gray-800 leading-tight mb-2">
+                                  {edu.degree}
+                                </h3>
+                                <p className="mobile-text-base lg:text-lg text-blue-600 font-semibold leading-tight">
+                                  {edu.institution}
+                                </p>
+                              </div>
                             </div>
-                            <div>
-                              <h3 className="text-2xl font-bold text-gray-800 leading-tight">
-                                {edu.degree}
-                              </h3>
-                              <p className="text-lg text-blue-600 font-semibold">
-                                {edu.institution}
-                              </p>
+                            
+                            {/* Location and Period */}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-4">
+                              <div className="flex items-center text-gray-600">
+                                <MapPin size={16} className="sm:w-5 sm:h-5 mr-2 sm:mr-3 text-blue-500 flex-shrink-0" />
+                                <span className="text-sm sm:text-base font-medium">{edu.location}</span>
+                              </div>
+                              <div className="flex items-center text-gray-600">
+                                <Calendar size={16} className="sm:w-5 sm:h-5 mr-2 sm:mr-3 text-purple-500 flex-shrink-0" />
+                                <span className="text-sm sm:text-base font-medium">{edu.period}</span>
+                              </div>
                             </div>
                           </div>
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                            <div className="flex items-center text-gray-600">
-                              <MapPin size={18} className="mr-3 text-blue-500" />
-                              <span className="font-medium">{edu.location}</span>
+                          
+                          {/* Status and Highlight */}
+                          <div className="flex flex-col sm:flex-row lg:flex-col items-start lg:items-end space-y-2 sm:space-y-0 sm:space-x-4 lg:space-x-0 lg:space-y-2">
+                            <div className="inline-flex items-center px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-bold bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg">
+                              <Award size={14} className="sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+                              <span className="truncate">{edu.status}</span>
                             </div>
-                            <div className="flex items-center text-gray-600">
-                              <Calendar size={18} className="mr-3 text-purple-500" />
-                              <span className="font-medium">{edu.period}</span>
+                            <div className="text-xs sm:text-sm text-gray-600 font-semibold bg-blue-50 px-2 sm:px-3 py-1 rounded-full">
+                              {edu.highlight}
                             </div>
                           </div>
                         </div>
-                        <div className="text-center lg:text-right">
-                          <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-bold bg-gradient-to-r from-blue-500 to-purple-500 text-white mb-3 shadow-lg">
-                            <Award size={16} className="mr-2" />
-                            {edu.status}
-                          </div>
-                          <div className="text-sm text-gray-600 font-semibold bg-blue-50 px-3 py-1 rounded-full">
-                            {edu.highlight}
-                          </div>
+                        
+                        {/* Description */}
+                        <div className="border-t border-gray-200 pt-4 sm:pt-6 flex-1">
+                          <p className="text-sm sm:text-base lg:text-lg text-gray-700 leading-relaxed">
+                            {edu.description}
+                          </p>
                         </div>
-                      </div>
-                      <div className="border-t border-gray-200 pt-6">
-                        <p className="text-gray-700 leading-relaxed text-lg">
-                          {edu.description}
-                        </p>
                       </div>
                     </div>
                   </div>
