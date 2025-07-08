@@ -1,29 +1,13 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Code, Brain, Zap, Globe, Database, Cpu } from 'lucide-react'
 import SkillGraph from './SkillGraph'
 import { useState, useEffect } from 'react'
 
 const Skills = () => {
-  const [graphSize, setGraphSize] = useState(340);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 1024) {
-        setGraphSize(600);
-      } else if (window.innerWidth >= 768) {
-        setGraphSize(480);
-      } else {
-        setGraphSize(340);
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-    handleResize(); // Set initial size
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  const [graphSize, setGraphSize] = useState(320);
+  const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
 
   const skillCategories = [
     {
@@ -99,6 +83,30 @@ const Skills = () => {
       ]
     }
   ]
+  
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setGraphSize(600);
+      } else if (window.innerWidth >= 768) {
+        setGraphSize(480);
+      } else {
+        setGraphSize(320);
+      }
+    };
+
+    const categoryInterval = setInterval(() => {
+      setCurrentCategoryIndex(prevIndex => (prevIndex + 1) % skillCategories.length);
+    }, 3000);
+
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Set initial size
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      clearInterval(categoryInterval);
+    }
+  }, [skillCategories.length]);
 
   return (
     <section id="skills" className="mobile-py bg-gradient-to-br from-slate-50 to-blue-50">
@@ -111,9 +119,20 @@ const Skills = () => {
           className="text-center mb-4 sm:mb-8"
         >
           <h2 className="mobile-text-3xl font-bold mb-4 sm:mb-6 gradient-text">Skills & Expertise</h2>
-          <p className="mobile-text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Explore my skill set through an interactive map. Hover over each node to see its connections.
-          </p>
+          <div className="h-8">
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={currentCategoryIndex}
+                className="mobile-text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+              >
+                {skillCategories[currentCategoryIndex].title}
+              </motion.p>
+            </AnimatePresence>
+          </div>
         </motion.div>
 
         <div className="w-full flex justify-center items-center h-[400px] sm:h-[560px] lg:h-[700px]">

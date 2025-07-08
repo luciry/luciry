@@ -140,24 +140,6 @@ const Carousel = ({
         </>
       )}
 
-      {/* Mobile navigation arrows - Only shown on mobile */}
-      {showNavigation && children.length > 1 && (
-        <>
-          <button
-            onClick={prevSlide}
-            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-900/70 backdrop-blur-sm text-white p-2 rounded-full transition-all duration-300 shadow-lg border border-white/20 z-10 sm:hidden"
-          >
-            <ChevronLeft size={16} />
-          </button>
-          <button
-            onClick={nextSlide}
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-900/70 backdrop-blur-sm text-white p-2 rounded-full transition-all duration-300 shadow-lg border border-white/20 z-10 sm:hidden"
-          >
-            <ChevronRight size={16} />
-          </button>
-        </>
-      )}
-
       {/* Indicators */}
       {showIndicators && children.length > 1 && (
         <div className="absolute bottom-3 sm:bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-1.5 sm:space-x-2 z-10">
@@ -167,8 +149,8 @@ const Carousel = ({
               onClick={() => goToSlide(index)}
               className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
                 index === currentIndex
-                  ? 'bg-white scale-125 shadow-lg'
-                  : 'bg-white/50 hover:bg-white/70 hover:scale-110'
+                  ? 'bg-gray-800/80 scale-125'
+                  : 'bg-gray-800/30 hover:bg-gray-800/50 hover:scale-110'
               }`}
             />
           ))}

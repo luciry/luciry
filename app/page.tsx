@@ -28,6 +28,7 @@ import Experience from './components/Experience'
 import Skills from './components/Skills'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
+import Footer from './components/Footer'
 
 export default function Home() {
   const [mounted, setMounted] = useState(false)
@@ -41,7 +42,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
       <Header />
-      <main>
+      <main className="pb-16 sm:pb-24">
         <Hero />
         <About />
         <Education />
@@ -50,6 +51,7 @@ export default function Home() {
         <Projects />
         <Contact />
       </main>
+      <Footer />
     </div>
   )
 } 
